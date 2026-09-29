@@ -7,7 +7,7 @@ from api.dto.auth_dto import LoginModel
 router = APIRouter(prefix="/users", tags=["Auth"])
 auth_controller = AuthController()
 
-@router.post("/login/{email}")
+@router.post("/login")
 async def login(login_model: LoginModel, session: Session = Depends(get_session)):
     user = auth_controller.login(login_model.email, login_model.password, session)
     return user

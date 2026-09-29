@@ -14,3 +14,8 @@ class UserUpdateDto(BaseModel):
     name: Name | None = None
     email: EmailStr | None = None
     password: Password | None = None
+    
+class UserSeed(BaseModel):
+    name: Name
+    email: EmailStr
+    password: Password

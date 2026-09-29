@@ -2,8 +2,9 @@
 /api/.venv
 .env
 .venv
+.kilo
 
-# Python bytecode / caches
+# Python caches
 __pycache__/
 *.py[cod]
 *$py.class

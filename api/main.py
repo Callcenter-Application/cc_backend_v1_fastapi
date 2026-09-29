@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends
 from contextlib import asynccontextmanager
-from api.config.db import create_db_and_tables
+from api.seeders.seed import run_seeders
 from api.routes.users import router as users
 from api.routes.auth import router as auth
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,17 +8,17 @@ from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    create_db_and_tables()
-    yield   
+    run_seeders()
+    yield
 
 
 app = FastAPI(lifespan=lifespan)
 
 origins = [
-    "http://localhost:5400",
-    "https://localhost:5400",
-    "http://127.0.0.1:5400",
-    "https://127.0.0.1:5400",
+    "http://localhost:5173/",
+    "https://localhost:5173/",
+    "http://127.0.0.1:5173",
+    "https://127.0.0.1:5173",
 ]
 
 
