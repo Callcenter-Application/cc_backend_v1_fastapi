@@ -1,4 +1,5 @@
 import os
+import uuid
 from datetime import datetime, timedelta, timezone
 
 import jwt
@@ -12,7 +13,7 @@ class JWTUtil:
     def generate_token(self, payload: dict) -> str:
         to_encode = payload.copy()
         expire = datetime.now(timezone.utc) + timedelta(minutes=JWT_EXPIRATION_MINUTES)
-        to_encode.update({"exp": expire})
+        to_encode.update({"exp": expire, "jti": str(uuid.uuid4())})
         return jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
 
     def decode_token(self, token: str) -> dict:

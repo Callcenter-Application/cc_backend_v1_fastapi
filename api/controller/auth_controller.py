@@ -14,3 +14,13 @@ class AuthController:
             session.rollback()
             raise HTTPException(status_code=500, detail="An error occurred during login")
         return {"message": "Login successful", "user": user.model_dump(), "access_token": token, "token_type": "bearer"}
+
+    def logout(self, payload: dict, session) -> dict:
+        try:
+            auth_service.logout(payload, session)
+        except ValueError as error:
+            raise HTTPException(status_code=400, detail=str(error))
+        except IntegrityError:
+            session.rollback()
+            raise HTTPException(status_code=500, detail="An error occurred during logout")
+        return {"message": "Logout successful"}

@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel, create_engine
 from api.models.user_model import User
+from api.models.revoked_token_model import RevokedToken
 import os
 
 def get_database_url() -> str:
