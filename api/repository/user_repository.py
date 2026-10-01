@@ -1,7 +1,7 @@
 from api.models.user_model import User
 from sqlmodel import select
 
-class UserRepocitory:
+class UserRepository:
 
     def find_all(self, session):
         statement = select(User).where(User.is_active == True)

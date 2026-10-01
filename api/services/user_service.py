@@ -1,11 +1,11 @@
-from api.repository.user_repository import UserRepocitory
+from api.repository.user_repository import UserRepository
 from api.utils.passhass import PasswordHasher
 
 
 class UserServices:
     
     def __init__(self):
-        self._user_repository = UserRepocitory()
+        self._user_repository = UserRepository()
         self._password_hasher = PasswordHasher()
     
     def find_all(self, session):
