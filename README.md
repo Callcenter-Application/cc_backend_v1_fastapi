@@ -88,8 +88,3 @@ backend/
         ├── update_user.py
         └── delete_user.py
 ```
-
-## Notas
-
-- Los datos se guardan en `api/db.json`. Al arrancar, la app carga ese archivo en memoria y cada creación/edición/borrado lo vuelve a escribir.
-- Este proyecto todavía no usa una base de datos real; eso se puede agregar más adelante.
